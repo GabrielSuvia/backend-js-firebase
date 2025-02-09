@@ -23,7 +23,7 @@ Elegir opción "Cloud firestore".
    *click sobre tu proyecto creado  
    *En el nombre de tu proyecto en el dibujo del engranaje click en configuracion de proyecto  
    *En ese panel darle a cuenta de servicio  
-   *y por ultimo abajo en el boton de generar nueva clave privada(credential- SDK)  
+   *buscar boton de abajo de nombre "generar nueva clave privada"(credential- SDK)  
   
 5.-Configurar variables de entorno(Credenciales SDK de firebase)  
 Si es necesario, configura las variables de entorno para tu proyecto. Por ejemplo:  
