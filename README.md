@@ -14,8 +14,7 @@ bash:
  *npm install -g firebase-tools  
  *firebase login  
  *firebase init  
-   
-Elegir opción "Cloud firestore".  
+ *elegir opción "Cloud firestore".  
   
 4.-Obtener Credencial SDK(configuraciones para el cloud firestore)  
    *logearse  
