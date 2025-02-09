@@ -6,6 +6,5 @@ console.log(credentialKey)
 
 admin.initializeApp({
   credential: admin.credential.cert(credentialKey),
- // databaseURL: 'https://tu-proyecto.firebaseio.com'
 });
 module.exports = admin;

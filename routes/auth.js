@@ -1,15 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const admin = require('../firebase');
-let auth = {email:"pablo@hotmail.com",password:"35535535"}
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
+  console.log(email,password)
   try {
-    const user = await admin.auth().signInWithEmailAndPassword(email, password);
-    res.json({ json:auth,message: 'Login exitoso' });
+    const userRef = admin.firestore().collection('users');
+    console.log("1", userRef)
+    const userDoc = await userRef.get();
+    console.log("2", userDoc)
+    if (userDoc.empty) {
+      console.log("No se encontraron documentos");
+    } else {
+      console.log("Se encontraron documentos");
+      userDoc.forEach((doc) => {
+        console.log(doc.id, doc.data());
+      });
+    }
+    res.json({ message: 'Login exitoso' });
+    
   } catch (error) {
-    res.status(401).json({ message: 'Credenciales inválidas' });
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

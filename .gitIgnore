@@ -2,3 +2,7 @@ node_modules
 package-lock.json
 serviceAccountKey
 .env
+functions
+.firebaserc
+firebase-debug.log
+firebase.json
