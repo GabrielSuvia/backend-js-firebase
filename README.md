@@ -1,7 +1,7 @@
 1.- Clonar el repositorio  
 Para descargar el proyecto, ejecuta el siguiente comando en tu terminal:  
 Bash:  
-git clone https://github.com/tu-usuario/tu-repositorio.git  
+git clone https://github.com/GabrielSuvia/backend-js-firebase.git 
   
 2.- Instalar dependencias  
 Una vez clonado el repositorio, ejecuta el siguiente comando para instalar las dependencias:  
@@ -11,10 +11,10 @@ npm install
 3.- logearse y crear un proyecto en firebase y vincularlo con el proyecto clonado  
 con el CLI de firebase:  
 bash:  
- *npm install -g firebase-tools  
- *firebase login  
- *firebase init  
- *elegir opción "Cloud firestore".  
+ npm install -g firebase-tools  
+ firebase login  
+ firebase init  
+ elegir opción "Cloud firestore".  
   
 4.-Obtener Credencial SDK(configuraciones para el cloud firestore)  
    *logearse  
