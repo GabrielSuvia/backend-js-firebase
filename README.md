@@ -11,9 +11,9 @@ npm install
 3.- logearse y crear un proyecto en firebase y vincularlo con el proyecto clonado
 con el CLI de firebase:\n
 bash:\n
- *npm install -g firebase-tools\n
- *firebase login\n
- *firebase init\n
+ *npm install -g firebase-tools  
+ *firebase login  
+ *firebase init  
  
 Elegir opción "Cloud firestore".\n
 
