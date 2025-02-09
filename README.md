@@ -18,12 +18,12 @@ bash:
 Elegir opción "Cloud firestore".
 
 4.-Obtener Credencial SDK(configuraciones para el cloud firestore)
-   -logearse
-   -ir a console en la parte de arriba ,lado derecho.
-   -click sobre tu proyecto creado
-   -En el nombre de tu proyecto en el dibujo del engranaje click en configuracion de proyecto
-   -En ese panel darle a cuenta de servicio
-   -y por ultimo abajo en el boton de generar nueva clave privada(credential- SDK)
+   *logearse
+   *ir a console en la parte de arriba ,lado derecho.
+   *click sobre tu proyecto creado
+   *En el nombre de tu proyecto en el dibujo del engranaje click en configuracion de proyecto
+   *En ese panel darle a cuenta de servicio
+   *y por ultimo abajo en el boton de generar nueva clave privada(credential- SDK)
 
 5.-Configurar variables de entorno(Credenciales SDK de firebase)
 Si es necesario, configura las variables de entorno para tu proyecto. Por ejemplo:
