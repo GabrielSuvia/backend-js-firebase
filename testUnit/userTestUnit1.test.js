@@ -63,7 +63,7 @@ describe("GET /users - Unit Tests", () => {
 
   // Caso 4: Tiempo de respuesta
   it("should respond within 500ms", async () => {
-    jest.spyOn(User, "getAllUsers").mockResolvedValue([{ id: "1", name: "John Doe" }]);
+    jest.spyOn(User, "getAllUsers").mockResolvedValue([mockUsers]);
 
     const startTime = Date.now();
     const response = await request(app).get("/api/users");
