@@ -13,4 +13,4 @@ app.use('/api/auth', authRoutes);
 const port=3000;
 app.listen(port,()=>{console.log(`Connected server to ${port}`)})
 
-exports.app = app;
+module.exports = app;

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const admin = require('../firebase');
-const User = require('../models/user');
+const User = require('../models/User');
 
-
+  
 router.get('/', async (req, res) => {
   const users = await User.getAllUsers(admin);
   res.json(users);
