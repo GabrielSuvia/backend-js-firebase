@@ -1,7 +1,6 @@
 const request = require("supertest");
 const User = require("../models/User");
 const app = require("../app");
-require("dotenv").config();
 
 describe("GET /users - Unit Tests", () => {
   let server;
@@ -52,13 +51,13 @@ describe("GET /users - Unit Tests", () => {
   });
 
   // Caso 3: Error en la base de datos
-  it("should return 500 if there is a database error", async () => {
+  it("should return 404 if there is a database error", async () => {
     jest.spyOn(User, "getAllUsers").mockRejectedValue(new Error("Database Error"));
 
     const response = await request(app).get("/api/users");
 
-    expect(response.status).toBe(500);
-    expect(response.body.error).toBe("Internal Server Error");
+    expect(response.status).toBe(404);
+    expect(response.body.error).toBe("No existen usuario");
   });
 
   // Caso 4: Tiempo de respuesta

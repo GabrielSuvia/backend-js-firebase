@@ -50,16 +50,16 @@ describe("GET /users - Unit Tests", () => {
   });
 
 
-  it("should return 500 if there is a database error", async () => {
+  it("should return 404 if there is a database error", async () => {
     jest.spyOn(User, "getUserById").mockRejectedValue(new Error("Database Error"));
 
-    const response = await request(app).get(`/api/users/${mockUsers.id}`);
+    const response = await request(app).get("/api/users/32312");
 
-    expect(response.status).toBe(500);
-    expect(response.body.error).toBe("Internal Server Error");
+    expect(response.status).toBe(404);
+    expect(response.body.error).toBe("Usuario no encontrado");
   });
 
-  // Caso 4: Tiempo de respuesta
+ 
   it("should respond within 500ms", async () => {
     jest.spyOn(User, "getUserById").mockResolvedValue(mockUsers);
 
@@ -73,7 +73,6 @@ describe("GET /users - Unit Tests", () => {
 
   
 
-  // Caso 6: Formato de respuesta correcto
   it("return with the format correct", async () => {
     jest.spyOn(User, "getUserById").mockResolvedValue(mockUsers);
 
@@ -84,7 +83,6 @@ describe("GET /users - Unit Tests", () => {
   });
 
 
-  // Caso 7: Llamada a la función getUserById
   it("should call the getUserById function at least once", async () => {
     const getUserByIdSpy = jest.spyOn(User, "getUserById");
 

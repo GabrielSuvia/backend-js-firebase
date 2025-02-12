@@ -5,8 +5,13 @@ const User = require('../models/User');
 
   
 router.get('/', async (req, res) => {
-  const users = await User.getAllUsers(admin);
-  res.json(users);
+  try {
+    const users = await User.getAllUsers(admin);
+    res.json(users);
+  } catch (error) {
+    res.status(404).json({ error: 'No existen usuario' });
+  }
+ 
 });
 
 router.get('/:id', async (req, res) => {
@@ -15,7 +20,7 @@ router.get('/:id', async (req, res) => {
   if (user) {
     res.json(user);
   } else {
-    res.status(404).json({ message: 'Usuario no encontrado' });
+    res.status(404).json({ error: 'Usuario no encontrado' });
   }
 });
 
@@ -29,7 +34,7 @@ router.post('/create', async (req, res) => {
       
   } catch (error) {
 
-    res.status(500).json({ message: 'Error al crear el usuario' });
+    res.status(400).json({ error: 'Bad request' });
   }
  
 
