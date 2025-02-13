@@ -83,7 +83,7 @@ describe("GET /users - Unit Tests", () => {
   });
 
 
-  it("should call the getUserById function at least once", async () => {
+  it("should call the getAllUsers function at least once", async () => {
     const getUserByIdSpy = jest.spyOn(User, "getAllUsers");
 
     await request(app).post("/api/auth/login").send(mockUsers);
