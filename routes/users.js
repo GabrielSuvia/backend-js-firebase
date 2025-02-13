@@ -3,8 +3,9 @@ const router = express.Router();
 const admin = require('../firebase');
 const User = require('../models/User');
 
-  
+
 router.get('/', async (req, res) => {
+
   try {
     const users = await User.getAllUsers(admin);
     res.json(users);
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const id = req.params.id;
- 
+
   try {
     const user = await User.getUserById(admin, id);//mando error
       console.log("1")
@@ -32,10 +33,14 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
+  const newUser = req.body;
 
   try {
+      //add credential in firebase
+      await admin.auth().createUser({
+      email: newUser.email,
+      password: newUser.password,})
 
-    const newUser = req.body;
     const response = await User.addUser(admin, newUser);
       res.json(response);
       
