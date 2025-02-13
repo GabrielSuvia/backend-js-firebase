@@ -53,7 +53,7 @@ describe("GET /users - Unit Tests", () => {
   it("should return 404 if there is a database error", async () => {
     jest.spyOn(User, "getUserById").mockRejectedValue(new Error("Database Error"));
 
-    const response = await request(app).get("/api/users/32312");
+    const response = await request(app).get(`/api/users/${mockUsers.id}`);
 
     expect(response.status).toBe(404);
     expect(response.body.error).toBe("Usuario no encontrado");

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest authTestUnit1.test.js",
+    "test": "jest userTestUnit2.test.js",
     "lint": "eslint",
     "start": "nodemon --exec node app.js"
   },

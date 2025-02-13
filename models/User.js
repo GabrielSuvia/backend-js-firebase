@@ -15,11 +15,7 @@ class User {
     static async getUserById(admin, id) {
       const userRef = admin.firestore().collection('users').doc(id);
       const userSnap = await userRef.get();
-      if (userSnap.exists) {
         return new User(userSnap.id, userSnap.data().name, userSnap.data().email, userSnap.data().password );
-      } else {
-        return null;
-      }
     }
 
     static async addUser(admin, user) {

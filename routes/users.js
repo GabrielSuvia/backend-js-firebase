@@ -16,12 +16,19 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const id = req.params.id;
-  const user = await User.getUserById(admin, id);
-  if (user) {
-    res.json(user);
-  } else {
+ 
+  try {
+    const user = await User.getUserById(admin, id);//mando error
+      console.log("1")
+      if(user){
+        res.json(user);
+      }
+     
+  } catch (error) {
+    console.log("2")
     res.status(404).json({ error: 'Usuario no encontrado' });
   }
+ 
 });
 
 router.post('/create', async (req, res) => {
