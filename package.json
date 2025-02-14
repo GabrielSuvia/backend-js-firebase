@@ -4,21 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest userTestUnit2.test.js",
+    "test": "jest authTestUnit1.test.js",
     "lint": "eslint",
     "start": "nodemon --exec node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "firebase": "^11.3.0",
     "firebase-admin": "^13.1.0",
-    "firebase-functions": "^6.3.1"
+    "firebase-functions": "^6.3.1",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
@@ -30,10 +30,9 @@
     "supertest": "^7.0.0"
   },
   "jest": {
-  "moduleNameMapper": {
-    "^firebase-admin$": "<rootDir>/__mocks__/firebase-admin.js"
-  },
-  "testEnvironment": "node"
-}
-
+    "moduleNameMapper": {
+      "^firebase-admin$": "<rootDir>/__mocks__/firebase-admin.js"
+    },
+    "testEnvironment": "node"
+  }
 }
