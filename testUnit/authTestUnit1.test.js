@@ -1,8 +1,14 @@
 const request = require("supertest");
 const User = require("../models/User");
 const app = require("../app");
-
-
+const jwt = require('jsonwebtoken');
+/*
+// 🔹 Mock de `jsonwebtoken`
+jest.mock('jsonwebtoken', () => ({
+  verify: jest.fn(),
+  sign: jest.fn().mockResolvedValue("11j2k3jh1j2h3")
+}));
+*/
 describe("GET /users - Unit Tests", () => {
   let server;
   let mockUsers;
@@ -31,22 +37,28 @@ describe("GET /users - Unit Tests", () => {
     let arrayUser = [];
     arrayUser.push(mockUsers)
     jest.spyOn(User, "getAllUsers").mockResolvedValue(arrayUser);
+    jest.spyOn(jwt, "sign").mockResolvedValue('11j2k3jh1j2h3');
 
     const response = await request(app).post("/api/auth/login").send(mockUsers);
 
     expect(response.status).toBe(200);
-    expect(response.body.message).toBe('Login exitoso');//or tocken
+    expect(response.body.message).toBe('11j2k3jh1j2h3');//or tocken
   });  
 
 
   
   it("should return an empty ", async () => {
-    jest.spyOn(User, "getAllUsers").mockResolvedValue([]);
+    const empty = [];
+    jest.spyOn(User, "getAllUsers").mockResolvedValue(empty);
+    const user = empty.filter((ele)=>ele.password === mockUsers.password && ele.email === mockUsers.email )
+    if(user.length === 1){
+      jest.spyOn(jwt, "sign").mockResolvedValue('11j2k3jh1j2h3');
+    };
 
     const response = await request(app).post(`/api/auth/login`).send(mockUsers);
 
-    expect(response.status).toBe(200);
-    expect(response.body.message).toBe('Login exitoso');
+    expect(response.status).toBe(401);
+    expect(response.body.error).toBe('Credenciales no validas');
   });
 
 
@@ -60,9 +72,12 @@ describe("GET /users - Unit Tests", () => {
   });
 
 
- 
+
+
   it("should respond within 500ms", async () => {
     jest.spyOn(User, "getAllUsers").mockResolvedValue([mockUsers]);
+
+    jest.spyOn(jwt, "sign").mockResolvedValue('11j2k3jh1j2h3');
 
     const startTime = Date.now();
     const response = await request(app).post("/api/auth/login").send(mockUsers);
@@ -72,10 +87,11 @@ describe("GET /users - Unit Tests", () => {
     expect(duration).toBeLessThan(500);
   });
 
-  
+
 
   it("return with the format correct", async () => {
     jest.spyOn(User, "getAllUsers").mockResolvedValue([mockUsers]);
+    jest.spyOn(jwt, "sign").mockResolvedValue('11j2k3jh1j2h3');
 
     const response = await request(app).post("/api/auth/login").send(mockUsers);
 
@@ -85,10 +101,12 @@ describe("GET /users - Unit Tests", () => {
 
   it("should call the getAllUsers function at least once", async () => {
     const getUserByIdSpy = jest.spyOn(User, "getAllUsers");
+    const GetToken = jest.spyOn(jwt, "sign");
 
     await request(app).post("/api/auth/login").send(mockUsers);
 
     expect(getUserByIdSpy).toHaveBeenCalledTimes(1);
+    expect( GetToken).toHaveBeenCalledTimes(1);
   });
 
 });
