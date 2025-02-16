@@ -2,7 +2,7 @@ const request = require("supertest");
 const User = require("../models/User");
 const app = require("../app");
 
-describe("GET /users - Unit Tests", () => {
+describe("GET /api/users/ - Unit Tests", () => {
   let server;
   let mockUsers;
 

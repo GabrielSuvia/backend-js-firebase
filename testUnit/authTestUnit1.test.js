@@ -3,13 +3,13 @@ const User = require("../models/User");
 const app = require("../app");
 const jwt = require('jsonwebtoken');
 /*
-// 🔹 Mock de `jsonwebtoken`
+//  Mock de `jsonwebtoken`
 jest.mock('jsonwebtoken', () => ({
   verify: jest.fn(),
   sign: jest.fn().mockResolvedValue("11j2k3jh1j2h3")
 }));
 */
-describe("GET /users - Unit Tests", () => {
+describe("POST /api/auth/login - Unit Tests", () => {
   let server;
   let mockUsers;
 

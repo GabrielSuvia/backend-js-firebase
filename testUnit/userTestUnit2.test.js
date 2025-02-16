@@ -3,7 +3,7 @@ const User = require("../models/User");
 const app = require("../app");
 require("dotenv").config();
 
-describe("GET /users - Unit Tests", () => {
+describe("GET /api/users - Unit Tests", () => {
   let server;
   let mockUsers;
 

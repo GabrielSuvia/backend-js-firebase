@@ -6,5 +6,6 @@ console.log(credentialKey)
 
 admin.initializeApp({
   credential: admin.credential.cert(credentialKey),
-});
+});  
+const auth = getAuth()
 module.exports = admin;
